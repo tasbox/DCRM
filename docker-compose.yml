@@ -9,8 +9,8 @@ services:
     restart: always
     ports:
       #- "8080:80"   # test
-      - "80:80"    # production
-      - "443:443"  # https
+      - "8080:80"    # production
+      - "4443:443"  # https
     volumes:
       - app_static:/usr/share/nginx/html/static
       - app_resources:/usr/share/nginx/html/resources
@@ -28,7 +28,7 @@ services:
     image: stilliard/pure-ftpd:hardened
     restart: always
     ports:
-      - "21:21"
+      - "2121:21"
       - "30000-30009:30000-30009"
     volumes:
       - app_upload:/home/dcrm
@@ -38,8 +38,8 @@ services:
       - app
     environment:
       PUBLICHOST: localhost
-      FTP_USER_NAME: dcrm                               # important: modify your ftp username
-      FTP_USER_PASS: dcrm_ftp_password                  # important: modify your ftp password
+      FTP_USER_NAME: cydia                               # important: modify your ftp username
+      FTP_USER_PASS: BDi55AmE4YXw7rfS                  # important: modify your ftp password
       FTP_USER_HOME: /home/dcrm
       #ADDED_FLAGS: "--tls=2"
   app:
@@ -92,7 +92,7 @@ services:
       - ./DCRM/.env
       - ./docker/DCRM/.env
   worker-high:
-    container_name: dcrm_worker-high
+    # container_name: dcrm_worker-high
     hostname: dcrm_worker-high
     restart: always
     build: .

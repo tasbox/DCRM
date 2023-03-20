@@ -119,7 +119,7 @@ if ENABLE_CACHE is True:
             'LOCATION': os.environ.get('DCRM_MEMCACHED_HOST', '127.0.0.1') + ':' + os.environ.get('DCRM_MEMCACHED_PORT', '11211'),
         }
     }
-    CACHE_TIME = int(os.environ.get('DCRM_CACHE_TIME', 7200))
+    CACHE_TIME = int(os.environ.get('DCRM_CACHE_TIME', 0))
     if DEBUG:
         CACHE_TIME = 0
     print("[DCRM] Page Caching: Enabled, %s seconds." % str(CACHE_TIME))
